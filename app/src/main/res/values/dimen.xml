@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="imgRiderNETHeight">200dp</dimen>148dp
+    <dimen name="txtbuttonHeight">40dp</dimen>
+    <dimen name="txtEditHeight">@dimen/txtbuttonHeight</dimen>
+    <dimen name="paddingImage">8dp</dimen>
+    <dimen name="paddingTxt">@dimen/paddingImage</dimen>
+    <dimen name="unreadmessagesTxtHeight">20dp</dimen>
+    <dimen name="unreadmessagesTxtWidth">@dimen/unreadmessagesTxtHeight</dimen>
+    <dimen name="icon_newsHeight">25dp</dimen>
+    <dimen name="icon_newsWidrh">@dimen/icon_newsHeight</dimen>
+    <dimen name="icon2_newsHeight">25dp</dimen>
+    <dimen name="icon2_newsWidrh">@dimen/icon2_newsHeight</dimen>
+    <dimen name="btn__size_homepage">12sp</dimen>
+    <dimen name="btnHomepageHeight">35dp</dimen>
+    <dimen name="btnHomepageWidth">153dp</dimen>
+    <dimen name="lineHomepageHeight">45dp</dimen>
+    <dimen name="sizeLowerTextHomepage">12sp</dimen>
+    <dimen name="sizeUpperTextHomepage">16sp</dimen>
+    <dimen name="imgSmalAvatarHeight">50dp</dimen>
+    <dimen name="imgSmalAvatarWidth">48dp</dimen>
+    <dimen name="imgNewsHeight">400dp</dimen>
+    <dimen name="showPhotoHeight">700dp</dimen>
+    <dimen name="bigAvatarWidth">148dp</dimen>
+    <dimen name="bidAvatarHeight">150dp</dimen>
+</resources>
