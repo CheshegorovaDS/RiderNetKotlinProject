@@ -20,7 +20,7 @@
             app:srcCompat="@drawable/splash" />
 
     <EditText
-            android:id="@+id/editTextEmailLogin"
+            android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="@dimen/txtbuttonHeight"
             android:layout_marginStart="16dp"
@@ -44,7 +44,7 @@
             app:layout_constraintVertical_bias="0.089" />
 
     <EditText
-            android:id="@+id/editTextPasswordLogin"
+            android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_height="@dimen/txtbuttonHeight"
             android:layout_marginStart="16dp"
@@ -65,7 +65,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextEmailLogin"
+            app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin"
+            app:layout_constraintTop_toBottomOf="@+id/password"
             app:layout_constraintVertical_bias="0.057" />
 
     <TextView

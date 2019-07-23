@@ -1,19 +1,18 @@
 package com.example.ridernetkotlinproject.presentation.login.activity
 
-class LogInPresenter : ILogInContract.ILogInPresenter{
+import com.example.ridernetkotlinproject.presentation.check.CheckLogin
+import kotlinx.android.synthetic.main.activity_login.*
 
-    lateinit var logInActivity: LogInActivity
-    lateinit var logInPresenter: LogInPresenter
+class LogInPresenter : ILogInContract.Presenter{
+    lateinit var view: ILogInContract.View
 
-    constructor(logInPresenter: LogInPresenter) {
-        this.logInPresenter = logInPresenter
+
+    constructor(view: ILogInContract.View){
+        this.view = view
     }
 
-    constructor(logInActivity: LogInActivity){
-        this.logInActivity = logInActivity
-    }
-
-    override fun checkLogIn() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun checkLogIn(login: String, password: String) {
+        if(password.isNotEmpty() && CheckLogin().check(login)) view.changeActivity()
+        else view.errorConnention("Неккоректные входные данные.")
     }
 }

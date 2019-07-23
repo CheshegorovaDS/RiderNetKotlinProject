@@ -1,17 +1,13 @@
 package com.example.ridernetkotlinproject.presentation.login.activity
 
 interface ILogInContract {
-    interface ILogInView{
-        fun showToast()
-        fun getUserData()
+    interface View{
+        fun errorConnention(r: String)
         fun changeActivity()
     }
 
-    interface ILogInPresenter{
-        fun checkLogIn()
+    interface Presenter{
+        fun checkLogIn(login: String, password: String)
     }
 
-    interface ILogInModel{
-
-    }
 }
