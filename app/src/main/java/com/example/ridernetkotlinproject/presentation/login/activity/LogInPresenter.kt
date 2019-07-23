@@ -4,7 +4,7 @@ import com.example.ridernetkotlinproject.presentation.check.CheckLogin
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LogInPresenter : ILogInContract.Presenter{
-    lateinit var view: ILogInContract.View
+     var view: ILogInContract.View
 
 
     constructor(view: ILogInContract.View){
