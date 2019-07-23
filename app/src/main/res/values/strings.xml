@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">RiderNETProject</string>
+    <string name="app_name">RiderNETKotlinProject</string>
     <string name="txt_message">Сообщения</string>
 </resources>

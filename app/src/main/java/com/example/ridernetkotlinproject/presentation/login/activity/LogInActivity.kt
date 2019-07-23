@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
 import java.util.regex.Pattern
 
-class LogInActivity :AppCompatActivity(){
+class LogInActivity :AppCompatActivity(), ILogInContract.ILogInView{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,5 +27,16 @@ class LogInActivity :AppCompatActivity(){
             nextActivity(MenuActivity::class.java)
         else
             Toast.makeText(this, "Неккоректные входные данные.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showToast() {
+        Toast.makeText(this, "Неккоректные входные данные.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun getUserData() {
+    }
+
+    override fun changeActivity() {
+        nextActivity(MenuActivity::class.java)
     }
 }

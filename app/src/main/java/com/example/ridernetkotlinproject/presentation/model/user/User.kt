@@ -109,9 +109,10 @@ class User : Serializable {
     /*if(Integer.parseInt(arrDateCur[1])<Integer.parseInt(arrDate[1]) ||
                 (Integer.parseInt(arrDateCur[1])==Integer.parseInt(arrDate[1]) && Integer.parseInt(arrDateCur[0])<Integer.parseInt(arrDate[0]))){
         Log.d("month",date.toString());
-        Log.d("mon","");*/ val age: Int
+        Log.d("mon","");*/
+    val age: Int
         get() {
-            val date = Date(birthData * 1000)
+            //val date = Date(birthData * 1000)
             val birthday = DateFormat.getDateTimeInstance().format(Date(birthData * 1000))
 
             val curDate = DateFormat.getDateTimeInstance().format(Date(System.currentTimeMillis()))
@@ -122,9 +123,6 @@ class User : Serializable {
             Log.d("now", curDate)
             return age
         }
-
-
-    constructor(user: User) {}
 
     constructor(
         userId: Long,
@@ -139,35 +137,6 @@ class User : Serializable {
         birthData: Long,
         gender: Int,
         status: String
-    ) {
-        this.id = userId
-        this.fullName = fullName
-        this.vipBG = vipBG
-        this.verified = verified
-        this.userPostType = userPostType
-        this.avatarDate = avatarDate
-        this.bigAvatar = bigAvatar
-        this.smallAvatar = smallAvatar
-        this.birthData = birthData
-        this.gender = gender
-        this.isOnline = isOnline
-        this.status = status
-    }
-
-    constructor(
-        userId: Long,
-        fullName: String,
-        isOnline: Int,
-        vipBG: String,
-        verified: Int,
-        userPostType: Int,
-        avatarDate: Long,
-        bigAvatar: String,
-        smallAvatar: String,
-        birthData: Long,
-        gender: Int,
-        status: String,
-        mail: String
     ) {
         this.id = userId
         this.fullName = fullName
@@ -280,6 +249,21 @@ class User : Serializable {
 
     fun setAvatarDate(avatarDate: Long) {
         this.avatarDate = avatarDate
+    }
+
+    fun getCountryAndCity(): String {
+        var result = ""
+        if (cityName!= null) {
+            result += cityName
+        }
+        if (countryName != null) {
+            if (result != "") {
+                result += ", $countryName"
+            } else {
+                result += countryName
+            }
+        }
+        return result
     }
 
     override fun toString(): String {

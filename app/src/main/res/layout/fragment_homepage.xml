@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                            xmlns:tools="http://schemas.android.com/tools"
+                                            android:id="@+id/NestedScrollHomepage"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/colorgrey">
+
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/main_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorgrey">
+
+        <android.support.v7.widget.CardView
+                android:id="@+id/card_view_user_page"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@id/recyclerViewHomepage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/colorgrey">
+
+            <android.support.constraint.ConstraintLayout
+                    android:id="@+id/item_user_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toTopOf="@id/recyclerViewHomepage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/main_home"
+                    app:layout_constraintTop_toTopOf="@id/main_home"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginBottom="20dp">
+
+                <TextView
+                        android:id="@+id/txtNameHomepage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/txtModel"
+                        app:layout_constraintEnd_toStartOf="@+id/imgAvatar"
+                        app:layout_constraintHorizontal_bias="0.027"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                        android:id="@+id/txtModel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/txtYearAndCountry"
+                        app:layout_constraintEnd_toStartOf="@+id/imgAvatar"
+                        app:layout_constraintHorizontal_bias="0.027"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtNameHomepage" />
+
+                <TextView
+                        android:id="@+id/txtYearAndCountry"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:textColor="@color/colorBlack"
+                        app:layout_constraintEnd_toStartOf="@+id/imgAvatar"
+                        app:layout_constraintHorizontal_bias="0.027"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtModel"
+                        app:layout_constraintBottom_toTopOf="@id/txtStatus"/>
+
+                <TextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/line"
+                        app:layout_constraintEnd_toStartOf="@+id/imgAvatar"
+                        app:layout_constraintHorizontal_bias="0.027"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtYearAndCountry" />
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgAvatar"
+                        android:layout_width="@dimen/bigAvatarWidth"
+                        android:layout_height="@dimen/bidAvatarHeight"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:paddingTop="20dp"
+                        android:src="@drawable/ic_user"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/img_avatar_big" />
+
+                <android.support.constraint.ConstraintLayout
+                        android:id="@+id/constraintLayoutReiting"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toStartOf="@id/constraintLayoutFriend"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgAvatar">
+
+                    <TextView
+                            android:id="@+id/txtCountReting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/sizeUpperTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/txtReiting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="РЕЙТИНГ"
+                            android:textSize="@dimen/sizeLowerTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/txtCountReting" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                        android:id="@+id/line"
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/lineHomepageHeight"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="@id/line4"
+                        app:layout_constraintEnd_toStartOf="@id/constraintLayoutFriend"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@id/constraintLayoutReiting"
+                        app:layout_constraintTop_toBottomOf="@id/imgAvatar"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteY="164dp" />
+
+                <android.support.constraint.ConstraintLayout
+                        android:id="@+id/constraintLayoutFriend"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="@id/constraintLayoutSubscribe"
+                        app:layout_constraintStart_toEndOf="@id/constraintLayoutReiting"
+                        app:layout_constraintTop_toBottomOf="@+id/imgAvatar">
+
+                    <TextView
+                            android:id="@+id/txtCountFriends"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/sizeUpperTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/txtFriends"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center"
+                            android:text="ДРУЗЬЯ"
+                            android:textSize="@dimen/sizeLowerTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/txtCountFriends" />
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                        android:id="@+id/line2"
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/lineHomepageHeight"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="@id/line4"
+                        app:layout_constraintEnd_toStartOf="@id/constraintLayoutSubscribe"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@id/constraintLayoutFriend"
+                        app:layout_constraintTop_toBottomOf="@id/imgAvatar"
+                        tools:layout_editor_absoluteY="166dp" />
+
+                <android.support.constraint.ConstraintLayout
+                        android:id="@+id/constraintLayoutSubscribe"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toStartOf="@id/constraintLayoutChecin"
+                        app:layout_constraintStart_toStartOf="@id/constraintLayoutFriend"
+                        app:layout_constraintTop_toBottomOf="@+id/imgAvatar">
+
+                    <TextView
+                            android:id="@+id/txtCountSubscride"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/sizeUpperTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/txtSubscribe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center"
+                            android:text="ПОДПИСЧИКИ"
+                            android:textSize="@dimen/sizeLowerTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/txtCountSubscride" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                        android:id="@+id/line3"
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/lineHomepageHeight"
+                        android:background="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="@id/line4"
+                        app:layout_constraintEnd_toStartOf="@id/constraintLayoutChecin"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@id/constraintLayoutSubscribe"
+                        app:layout_constraintTop_toBottomOf="@id/imgAvatar"
+                        tools:layout_editor_absoluteY="166dp" />
+
+                <android.support.constraint.ConstraintLayout
+                        android:id="@+id/constraintLayoutChecin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/constraintLayoutSubscribe"
+                        app:layout_constraintTop_toBottomOf="@+id/imgAvatar">
+
+                    <TextView
+                            android:id="@+id/txtCountCheckins"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/sizeUpperTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/txtChekins"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center"
+                            android:text="ЧЕКИНЫ"
+                            android:textSize="@dimen/sizeLowerTextHomepage"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/txtCountCheckins" />
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                        android:id="@+id/line4"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorgrey"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnWrite"
+                        app:layout_constraintTop_toBottomOf="@id/line2"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="0dp" />
+
+                <Button
+                        android:id="@+id/btnWrite"
+                        android:layout_width="@dimen/btnHomepageWidth"
+                        android:layout_height="@dimen/btnHomepageHeight"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/roundedbutton"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:text="Написать"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/btn__size_homepage"
+                        app:layout_constraintEnd_toStartOf="@+id/btnAddFriend"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/line4" />
+
+                <Button
+                        android:id="@+id/btnAddFriend"
+                        android:layout_width="@dimen/btnHomepageWidth"
+                        android:layout_height="@dimen/btnHomepageHeight"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/roundedbutton"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:text="Добавить в друзья"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/btn__size_homepage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btnWrite"
+                        app:layout_constraintTop_toBottomOf="@id/line4" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewHomepage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorgrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_view_user_page" />
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:indeterminateTint="@color/btn_nav"
+                app:layout_constraintBottom_toBottomOf="@+id/recyclerViewHomepage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>

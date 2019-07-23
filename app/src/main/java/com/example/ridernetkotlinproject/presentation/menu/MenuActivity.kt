@@ -9,7 +9,8 @@ import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.fr
 import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.homepage.HomepageFragment
 import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.map.MapFragment
 import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.messeger.fragment.MessegerFragment
-import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.news.NewsFragment
+import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.news.fragment.NewsFragment
+import com.example.ridernetkotlinproject.presentation.navigation.INavigation
 import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuActivity: AppCompatActivity() {
@@ -27,7 +28,8 @@ class MenuActivity: AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_news -> {
-                loadFragment(NewsFragment().newInstance())
+                loadFragment(NewsFragment(openUserHomepage))
+                //loadFragment(NewsFragment().newInstance())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_message -> {
@@ -46,14 +48,35 @@ class MenuActivity: AppCompatActivity() {
         }
     }
 
-
-
-
     private fun loadFragment(fragment: Fragment) {
             val ft = supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_content, fragment)
             ft.commit()
         }
+
+    internal var openUserHomepage: INavigation = object : INavigation {
+        override fun add(fragment: Fragment, bundle: Bundle) {
+            fragment.arguments = bundle
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fl_content, fragment)
+                .addToBackStack(" ")
+                .commit()
+        }
+
+        override fun remove(fragment: Fragment) {
+
+        }
+
+        override fun replace(fragment: Fragment, bundle: Bundle) {
+            fragment.arguments = bundle
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fl_content, fragment)
+                .commit()
+        }
+    }
+
 
 
 }
