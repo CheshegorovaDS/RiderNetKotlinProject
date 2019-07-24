@@ -1,16 +1,12 @@
 package com.example.ridernetkotlinproject.presentation.registration
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.ridernetkotlinproject.R
-import com.example.ridernetkotlinproject.presentation.check.CheckLogin
-import com.example.ridernetkotlinproject.presentation.check.CheckPhone
 import com.example.ridernetkotlinproject.presentation.exten.nextActivity
 import com.example.ridernetkotlinproject.presentation.menu.MenuActivity
-import kotlinx.android.synthetic.main.activity_entry.*
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity:AppCompatActivity(), IRegistrationContact.View{

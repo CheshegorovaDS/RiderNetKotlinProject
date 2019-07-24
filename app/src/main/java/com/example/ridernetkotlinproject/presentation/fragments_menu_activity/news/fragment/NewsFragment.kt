@@ -67,6 +67,7 @@ class NewsFragment: BaseFragment, NewsAdapter.NextHomepage, NewsAdapter.GetCurre
 
     override fun openHomepage(userId: Long?) {
         val id = Bundle()
+        id.putLong("userId", userId!!)
         navigation!!.add(HomepageFragment(), id)
     }
 
