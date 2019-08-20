@@ -10,7 +10,7 @@ import java.util.Date
 class News {
     @SerializedName("user")
     @Expose
-    lateinit var user: User
+    var user: User
     @SerializedName("post_id")
     @Expose
     var newsId: Long = 0

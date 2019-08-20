@@ -10,9 +10,7 @@ import android.widget.TextView
 import com.example.ridernetkotlinproject.R
 import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.messeger.model.Messeger
 
-import java.util.ArrayList
-
-class MessegerAdapter(internal var list: ArrayList<Messeger>) : RecyclerView.Adapter<MessegerAdapter.TableViewHolder>() {
+class MessegerAdapter(internal var list: List<Messeger>) : RecyclerView.Adapter<MessegerAdapter.TableViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TableViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_message, parent, false)

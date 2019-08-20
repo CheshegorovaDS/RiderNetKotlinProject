@@ -15,7 +15,7 @@
             android:background="@color/colorgrey">
 
         <android.support.v7.widget.CardView
-                android:id="@+id/card_view_user_page"
+                android:id="@+id/cardViewUserPage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -359,7 +359,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_view_user_page" />
+                app:layout_constraintTop_toBottomOf="@id/cardViewUserPage" />
 
         <ProgressBar
                 android:id="@+id/progressBar"

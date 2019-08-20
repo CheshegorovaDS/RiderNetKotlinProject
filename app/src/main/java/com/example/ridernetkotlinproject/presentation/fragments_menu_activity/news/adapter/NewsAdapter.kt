@@ -1,8 +1,6 @@
 package com.example.ridernetkotlinproject.presentation.fragments_menu_activity.news.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,11 +13,10 @@ import com.squareup.picasso.Picasso
 import java.util.ArrayList
 import android.support.v4.content.ContextCompat.startActivities
 import com.example.ridernetkotlinproject.R
-import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.functions.LikeNews
 import com.example.ridernetkotlinproject.presentation.model.news.News
 import com.example.ridernetkotlinproject.presentation.showPhoto.ShowPhotoActivity
 
-class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TableViewHolder> {
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TableViewHolder>{
     var view:View? = null
     internal var list: ArrayList<News>
     lateinit var nextHomepage: NextHomepage
@@ -42,31 +39,25 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TableViewHolder> {
 
     override fun onBindViewHolder(holder: TableViewHolder, i: Int) {
 
-        downloadPhoto(holder, i )
+        downloadPhoto(holder, i)
 
-        holder.imgLike.setImageResource(LikeNews().changeHeart(list.get(i)))
-        holder.txtNameUserNews.setText(list[i].user.fullName)
-        holder.timeNews.text = list[i].getTimeNews()
-        holder.txtUser.setText(list[i].txtUser)
-        holder.txtCountLike.setText("${list[i].txtCountLike}")
-        holder.txtCommentCount.setText("${list[i].txtCommentCount}")
-        holder.txtNik.setText(LikeNews().changeTxtNik(list.get(i)))
+        holder.apply {
+            imgLike.setImageResource(changeHeart(list.get(i)))
+            txtNameUserNews.setText(list[i].user.fullName)
+            timeNews.text = list[i].getTimeNews()
+            txtUser.setText(list[i].txtUser)
+            txtCountLike.setText("${list[i].txtCountLike}")
+            txtCommentCount.setText("${list[i].txtCommentCount}")
+            txtNik.setText(changeTxtNik(list.get(i)))
+        }
+
         if(list[i].getListLikeUsers().equals(""))holder.txtNik.visibility = View.INVISIBLE
         else holder.txtNik.visibility = View.VISIBLE
 
-        holder.imgLike.setOnClickListener {
-            if (list[i].isLike()){ list[i].setLike(0)
-            }else{ list[i].setLike(1) }
-            val likeNews = LikeNews()
-            holder.imgLike.setImageResource(likeNews.changeHeart(list.get(i)))
-            holder.txtCountLike.setText(likeNews.changeCountLikes(list.get(i)))
-            var txtNik:String = likeNews.changeTxtNik(list.get(i))
-            holder.txtNik.setText(txtNik)
-            if(txtNik.equals(""))holder.txtNik.visibility = View.INVISIBLE
-            else holder.txtNik.visibility = View.VISIBLE
-        }
+        holder.imgLike.setOnClickListener { putLike(list[i],holder) }
 
-        holder.imgNews?.setOnClickListener(View.OnClickListener { showPhoto(i) })
+        holder.imgNews?.setOnClickListener{ list[i].image?.let { showPhoto(it) } }
+        //it1 -> presenter.openPhoto(view?.context!!, it1)
 
         holder.imgAvatar.setOnClickListener { goToHomepage(list[i].user.id) }
 
@@ -77,7 +68,6 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TableViewHolder> {
     }
 
     fun downloadPhoto(holder: TableViewHolder, i: Int) {
-
         list[i].user?.smallAvatar?.let {
             Picasso.with(view!!.context) //передаем контекст приложения
                 .load(it)
@@ -96,9 +86,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TableViewHolder> {
         }
     }
 
-    fun showPhoto(i: Int) {
+    fun showPhoto(str: String) {
         val intent = Intent(view?.context, ShowPhotoActivity::class.java)
-        intent.putExtra("photo", list[i].image)
+        intent.putExtra("photo", str)
         startActivities(view!!.context, arrayOf(intent))
     }
 
@@ -107,35 +97,51 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TableViewHolder> {
         nextHomepage!!.openHomepage(id)
     }
 
-    inner class TableViewHolder @SuppressLint("WrongViewCast")
-    constructor(view: View) : RecyclerView.ViewHolder(view) {
-        internal val txtNameUserNews: TextView
-        internal val timeNews: TextView
-        internal val txtUser: TextView
-        internal val txtNik: TextView
-        internal val txtCountLike: TextView
-        internal val txtCommentCount: TextView
-        internal val imgAvatar: ImageView
-        internal var imgNews: ImageView? = null
-        internal val imgLike: ImageView
-        internal val progressBar: ProgressBar
-        internal val cardView: CardView
+    fun putLike(news:News, holder: TableViewHolder){
+        if (news.isLike()){ news.setLike(0)
+        }else{ news.setLike(1) }
+        holder.imgLike.setImageResource(changeHeart(news))
+        holder.txtCountLike.setText(changeCountLikes(news))
+        var txtNik:String = changeTxtNik(news)
+        holder.txtNik.setText(txtNik)
+        if(txtNik.equals(""))holder.txtNik.visibility = View.INVISIBLE
+        else holder.txtNik.visibility = View.VISIBLE
+    }
 
+     fun changeHeart(obj: News): Int =  if (obj.isLike()) R.drawable.ic_heart  else  R.drawable.ic_heart2
 
-        init {
-            this.txtNameUserNews = view.findViewById<View>(R.id.txtNameUserNews) as TextView
-            this.timeNews = view.findViewById<View>(R.id.txtTimeNews) as TextView
-            this.txtUser = view.findViewById<View>(R.id.txtUser) as TextView
-            this.txtNik = view.findViewById<View>(R.id.txtNik) as TextView
-            this.txtCountLike = view.findViewById<View>(R.id.txtLike) as TextView
-            this.txtCommentCount = view.findViewById<View>(R.id.txtcountComment) as TextView
-            this.imgAvatar = view.findViewById<View>(R.id.imgAvatar) as ImageView
-            this.imgNews = view.findViewById<View>(R.id.imgNews) as ImageView
-            this.imgLike = view.findViewById<View>(R.id.imgLike) as ImageView
-            this.imgNews = view.findViewById<View>(R.id.imgNews) as ImageView
-            this.progressBar = view.findViewById<View>(R.id.progressBarNews) as ProgressBar
-            this.cardView = view.findViewById<View>(R.id.card_view_news) as CardView
+     fun changeTxtNik(obj: News):String {
+        if (obj.txtCountLike >= 10){
+            return "Понравилось: ${obj.txtCountLike}"
         }
+        var result:String=""
+        if(obj.isLike()) { result += "Мне" }
+        if (obj.getListLikeUsers().equals("")) { return result }
+        if(!result.equals("")){result+=", "}
+        result+=obj.getListLikeUsers()
+        return  result
+    }
+
+     fun changeCountLikes(obj: News): String =
+        if (obj.isLike()) {
+            obj.setTxtCountLike(++obj.txtCountLike)
+            "${obj.txtCountLike}"
+        }else {
+            obj.setTxtCountLike(--obj.txtCountLike)
+            "${obj.txtCountLike}"
+        }
+
+    class TableViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val txtNameUserNews = view.findViewById<TextView>(R.id.txtNameUserNews)
+        val timeNews = view.findViewById<TextView>(R.id.txtTimeNews)
+        val txtUser = view.findViewById<TextView>(R.id.txtUser)
+        val txtNik = view.findViewById<TextView>(R.id.txtNik)
+        val txtCountLike = view.findViewById<TextView>(R.id.txtLike)
+        val txtCommentCount = view.findViewById<TextView>(R.id.txtcountComment)
+        val imgAvatar = view.findViewById<ImageView>(R.id.imgAvatar)
+        val imgNews = view.findViewById<ImageView>(R.id.imgNews)
+        val imgLike = view.findViewById<ImageView>(R.id.imgLike)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressBarNews)
     }
 
     interface NextHomepage {
@@ -147,3 +153,4 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TableViewHolder> {
     }
 
 }
+

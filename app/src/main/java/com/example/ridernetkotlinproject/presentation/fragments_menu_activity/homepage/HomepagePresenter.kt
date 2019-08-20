@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.util.Log
 import com.example.ridernetkotlinproject.presentation.exten.showPhoto
 import com.example.ridernetkotlinproject.presentation.showPhoto.ShowPhotoActivity
-import com.example.ridernetproject.User
 
 class HomepagePresenter : IHomepageContact.Presenter{
     var view: HomepageFragment
@@ -29,13 +28,14 @@ class HomepagePresenter : IHomepageContact.Presenter{
             onSuccess = {
                 if (isMyUser(id)) view.myProfile(it)
                 else view.otherProfile(it)
+                view.showProfile()
             },
             onError = {
-                Log.d("ServerError", it.message)
+               // Log.d("ServerError", it.message)
                 view.errorConnection("Произошла ошибка при соединения.")
+                view.showProfile()
             }
         )
-        view.showProfile()
     }
 
     override fun nextActivity(context: Context,photo: String) {

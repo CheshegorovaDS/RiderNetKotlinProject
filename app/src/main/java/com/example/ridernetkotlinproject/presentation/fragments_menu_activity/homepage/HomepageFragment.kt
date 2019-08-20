@@ -1,28 +1,18 @@
 package com.example.ridernetkotlinproject.presentation.fragments_menu_activity.homepage
 
-import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import com.example.ridernetkotlinproject.R
 import com.example.ridernetkotlinproject.presentation.base.AppFragment
-import com.example.ridernetkotlinproject.presentation.deserializer.NetworkService
 import com.example.ridernetkotlinproject.presentation.exten.hide
 import com.example.ridernetkotlinproject.presentation.exten.show
-import com.example.ridernetkotlinproject.presentation.exten.showPhoto
 import com.example.ridernetkotlinproject.presentation.fragments_menu_activity.news.adapter.NewsAdapter
-import com.example.ridernetkotlinproject.presentation.model.user.UserResponse
-import com.example.ridernetkotlinproject.presentation.showPhoto.ShowPhotoActivity
 import com.example.ridernetproject.User
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_homepage.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HomepageFragment : AppFragment() , NewsAdapter.NextHomepage, IHomepageContact.View{
 
@@ -100,12 +90,12 @@ class HomepageFragment : AppFragment() , NewsAdapter.NextHomepage, IHomepageCont
     //override fun updateProfile(id: Long) {}
 
     override fun showProfile() {
-        card_view_user_page.show()
+        cardViewUserPage.show()
         progressBar.hide()
     }
 
     override fun hideProfile() {
-        card_view_user_page.hide()
+        cardViewUserPage.hide()
         progressBar.show()
     }
 
